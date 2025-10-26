@@ -1,6 +1,7 @@
 package com.skypro.CoursePaper_2_JavaCOR.service;
 
 import com.skypro.CoursePaper_2_JavaCOR.domain.Question;
+import com.skypro.CoursePaper_2_JavaCOR.exceptions.IncorrectCallGetRandomQuestionBCQuestionServiceEmpty;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -8,7 +9,7 @@ import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    List<Question> questionPull = new ArrayList<Question>();
+    public List<Question> questionPull = new ArrayList<Question>();
 
     @Override
     public boolean add(String question, String answer) {
@@ -104,9 +105,9 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
-//        if (questionPull.isEmpty()) {
-//            throw new IncorrectCallGetRandomQuestionBCQuestionServiceEmpty();
-//        }
+        if (questionPull.isEmpty()) {
+            throw new IncorrectCallGetRandomQuestionBCQuestionServiceEmpty();
+        }
         Random random = new Random();
         int randomNumber = random.nextInt(questionPull.size());
         return questionPull.get(randomNumber);
