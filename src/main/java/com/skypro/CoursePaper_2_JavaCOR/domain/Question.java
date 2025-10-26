@@ -1,8 +1,8 @@
 package com.skypro.CoursePaper_2_JavaCOR.domain;
 
 public class Question {
-    private final String question;  // Вопрос
-    private final String answer;    // Ответ
+    private final String question;
+    private final String answer;
 
     public Question(String question, String answer) {
         this.question = question;

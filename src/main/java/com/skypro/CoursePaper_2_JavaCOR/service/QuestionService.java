@@ -15,9 +15,4 @@ public interface QuestionService {
     Collection<Question> getAll();              // Все вопросы
 
     Question getRandomQuestion();               // Получить Случайный вопрос
-
-
-
-
-
 }
