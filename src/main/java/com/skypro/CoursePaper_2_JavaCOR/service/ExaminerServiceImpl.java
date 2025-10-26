@@ -1,6 +1,7 @@
 package com.skypro.CoursePaper_2_JavaCOR.service;
 
 import com.skypro.CoursePaper_2_JavaCOR.domain.Question;
+import com.skypro.CoursePaper_2_JavaCOR.exceptions.IncorrectNumberOfQuestionsInTicket;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,11 +21,11 @@ public class ExaminerServiceImpl implements ExaminerService {
         // Создаём список для хранения выбранных вопросов
         List<Question> resultList = new ArrayList<>();
 
-//        // Проверяем, достаточно ли вопросов в системе для формирования выборки
-//        // Если общее количество вопросов меньше запрашиваемого, выбрасываем исключение
-//        if (questionService.getAll().size() < amount) {
-//            throw new IncorrectNumberOfQuestionsInTicket(amount, questionService.getAll().size());
-//        }
+        // Проверяем, достаточно ли вопросов в системе для формирования выборки
+        // Если общее количество вопросов меньше запрашиваемого, выбрасываем исключение
+        if (questionService.getAll().size() < amount) {
+            throw new IncorrectNumberOfQuestionsInTicket(amount, questionService.getAll().size());
+        }
 
         // Цикл для выбора заданного количества уникальных вопросов
         for (int i = 0; i < amount; i++) {
