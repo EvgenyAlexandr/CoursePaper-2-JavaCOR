@@ -81,19 +81,31 @@ public class JavaQuestionService implements QuestionService {
         boolean removeSuccess = false;
 
         // Перебираем все элементы коллекции questionPull по индексу
-        // Используем классический for с индексом, так как будем удалять элементы по позиции
-        for (int i = 0; i < questionPull.size(); i++) {
-            // Проверяем, совпадает ли текст текущего вопроса с искомым
-            if (questionPull.get(i).getQuestion().equals(question.getQuestion())) {
-                // Удаляем вопрос из коллекции по текущему индексу
-                // При удалении элемент сдвигается, и следующий элемент занимает его позицию
-                questionPull.remove(i);
+//        // Используем классический for с индексом, так как будем удалять элементы по позиции
+//        for (int i = 0; i < questionPull.size(); i++) {
+//            // Проверяем, совпадает ли текст текущего вопроса с искомым
+//            if (questionPull.get(i).getQuestion().equals(question.getQuestion())) {
+//                // Удаляем вопрос из коллекции по текущему индексу
+//                // При удалении элемент сдвигается, и следующий элемент занимает его позицию
+//                questionPull.remove(i);
+//
+//                // Устанавливаем флаг успеха удаления
+//                removeSuccess = true;
+//            }
+//        }
+
+        // Используем итератор для безопасного удаления во время обхода
+        Iterator<Question> iterator = questionPull.iterator();
+        while (iterator.hasNext()) {
+            Question current = iterator.next();
+            if (current.getQuestion().equals(question.getQuestion())) {
+                // Удаляем вопрос из коллекции
+                iterator.remove();
 
                 // Устанавливаем флаг успеха удаления
                 removeSuccess = true;
             }
         }
-
         // Возвращаем результат операции: true — если хотя бы один вопрос был удалён, false — если ни одного
         return removeSuccess;
     }
@@ -112,7 +124,4 @@ public class JavaQuestionService implements QuestionService {
         int randomNumber = random.nextInt(questionPull.size());
         return questionPull.get(randomNumber);
     }
-
-
-
 }

@@ -2,6 +2,7 @@ package com.skypro.CoursePaper_2_JavaCOR.controller;
 
 import com.skypro.CoursePaper_2_JavaCOR.domain.Question;
 import com.skypro.CoursePaper_2_JavaCOR.service.JavaQuestionService;
+import com.skypro.CoursePaper_2_JavaCOR.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ public class JavaQuestionController {
 
     // Внедрение сервиса для работы с вопросами через Spring Dependency Injection
     @Autowired
-    private JavaQuestionService javaQuestionService;
+    private QuestionService javaQuestionService;
 
     // Добавляем вопрос
     // - question текст вопроса, передаётся через URL-путь
