@@ -23,7 +23,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Тест сервиса Экзаменатор")
+@DisplayName("Тест сервиса - Экзаменатор")
 public class ExaminerServiceImplTest {
 
     @Mock           // Имитируем зависимость JavaQuestionService — это позволит тестировать класс без реальной реализации

@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Тест сервиса Вопросы")
+@DisplayName("Тест сервиса - Вопросы")
 public class JavaQuestionServiceTest {
 
     @Mock // Создаёт мок-объект (заглушку) для интерфейса/класса. В данном случае — для репозитория вопросов.
