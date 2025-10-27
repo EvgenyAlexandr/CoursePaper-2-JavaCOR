@@ -64,15 +64,15 @@ public class JavaQuestionService implements QuestionService {
     public boolean remove(Question question) {
         boolean removeSuccess = false;
 
-        for (int i = 0; i < questionPull.size(); i++) {
-            if (questionPull.get(i).getQuestion().equals(question.getQuestion())) {
-                questionPull.remove(i);
-
-                // Устанавливаем флаг успеха удаления
+        // Используем итератор для безопасного удаления во время обхода
+        Iterator<Question> iterator = questionPull.iterator();
+        while (iterator.hasNext()) {
+            Question current = iterator.next();
+            if (current.getQuestion().equals(question.getQuestion())) {
+                iterator.remove();
                 removeSuccess = true;
             }
         }
-
         // Возвращаем результат операции: true — если хотя бы один вопрос был удалён, false — если ни одного
         return removeSuccess;
     }
@@ -91,7 +91,4 @@ public class JavaQuestionService implements QuestionService {
         int randomNumber = random.nextInt(questionPull.size());
         return questionPull.get(randomNumber);
     }
-
-
-
 }
