@@ -10,44 +10,77 @@ import java.util.*;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private final QuestionService questionService;
+    private final JavaQuestionService javaQuestionService;
+    private final MathQuestionService mathQuestionService;
 
-    public ExaminerServiceImpl(QuestionService questionService) {
-        this.questionService = questionService;
+    public ExaminerServiceImpl(JavaQuestionService javaQuestionService, MathQuestionService mathQuestionService) {
+        this.javaQuestionService = javaQuestionService;
+        this.mathQuestionService = mathQuestionService;
     }
 
     @Override
-    public Collection<Question> getQuestion(int amount) {
+    public Collection<Question> getJavaQuestion(int amount) {
+//        // Создаём список для хранения выбранных вопросов
+        List<Question> resultList = new ArrayList<>();
+//
+//        // Проверяем, достаточно ли вопросов в системе для формирования выборки
+//        // Если общее количество вопросов меньше запрашиваемого, выбрасываем исключение
+//        if (javaQuestionService.getAll().size() < amount) {
+//            throw new IncorrectNumberOfQuestionsInTicket(amount, javaQuestionService.getAll().size());
+//        }
+//
+//        // Цикл для выбора заданного количества уникальных вопросов
+//        for (int i = 0; i < amount; i++) {
+//            // Флаг для контроля успешного добавления уникального вопроса
+//            boolean temp = true;
+//            // Временная переменная для хранения случайно выбранного вопроса
+//            Question tempQuestion;
+//
+//            // Бесконечный цикл до тех пор, пока не будет добавлен уникальный вопрос
+//            while (temp) {
+//                // Получаем случайный вопрос из сервиса
+//                tempQuestion = javaQuestionService.getRandomQuestion();
+//
+//                // Проверяем, что вопрос ещё не добавлен в итоговый список
+//                if (!resultList.contains(tempQuestion)) {
+//                    // Добавляем уникальный вопрос в результат
+//                    resultList.add(tempQuestion);
+//                    // Сбрасываем флаг, чтобы выйти из цикла while
+//                    temp = false;
+//                }
+//                // Если вопрос уже есть в списке, цикл продолжается, и выбирается новый случайный вопрос
+//            }
+//        }
+//
+//        // Возвращаем коллекцию выбранных уникальных вопросов
+        return resultList;
+    }
+
+    @Override
+    public Collection<Question> getMathQuestion(int amount) {
         // Создаём список для хранения выбранных вопросов
         List<Question> resultList = new ArrayList<>();
 
-        // Проверяем, достаточно ли вопросов в системе для формирования выборки
-        // Если общее количество вопросов меньше запрашиваемого, выбрасываем исключение
-        if (questionService.getAll().size() < amount) {
-            throw new IncorrectNumberOfQuestionsInTicket(amount, questionService.getAll().size());
+        // Проверяем, достаточно ли вопросов в системе для формирования билета
+        // Если запрошенное количество больше доступного — выбрасываем исключение
+        if (mathQuestionService.getAll().size() < amount) {
+            throw new IncorrectNumberOfQuestionsInTicket(amount, mathQuestionService.getAll().size());
         }
 
-        // Цикл для выбора заданного количества уникальных вопросов
+        // Цикл для выбора необходимого количества уникальных вопросов
         for (int i = 0; i < amount; i++) {
-            // Флаг для контроля успешного добавления уникального вопроса
-            boolean temp = true;
-            // Временная переменная для хранения случайно выбранного вопроса
-            Question tempQuestion;
+            Question candidateQuestion; // Временная переменная для хранения выбранного вопроса
 
-            // Бесконечный цикл до тех пор, пока не будет добавлен уникальный вопрос
-            while (temp) {
+            // Цикл с повторным выбором до нахождения уникального вопроса
+            // Используем do-while: сначала получаем вопрос, затем проверяем уникальность
+            do {
                 // Получаем случайный вопрос из сервиса
-                tempQuestion = questionService.getRandomQuestion();
+                candidateQuestion = mathQuestionService.getRandomQuestion();
+            } while (resultList.contains(candidateQuestion)); // Повторяем, если вопрос уже есть в списке
 
-                // Проверяем, что вопрос ещё не добавлен в итоговый список
-                if (!resultList.contains(tempQuestion)) {
-                    // Добавляем уникальный вопрос в результат
-                    resultList.add(tempQuestion);
-                    // Сбрасываем флаг, чтобы выйти из цикла while
-                    temp = false;
-                }
-                // Если вопрос уже есть в списке, цикл продолжается, и выбирается новый случайный вопрос
-            }
+            // После выхода из цикла do-while вопрос гарантированно уникален
+            // Добавляем его в итоговый список
+            resultList.add(candidateQuestion);
         }
 
         // Возвращаем коллекцию выбранных уникальных вопросов

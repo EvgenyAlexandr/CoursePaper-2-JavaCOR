@@ -14,8 +14,11 @@ public class ExamController {
 
     @GetMapping("/exam/get/{amount}")
     public Collection<Question> javaExam(@PathVariable("amount") int amount) {
-        return examinerService.getQuestion(amount);
+        return examinerService.getJavaQuestion(amount);
+    }
 
-
+    @GetMapping("/exam/math/get/{amount}")
+    public Collection<Question> mathExam(@PathVariable("amount") int amount) {
+        return examinerService.getMathQuestion(amount);
     }
 }

@@ -5,5 +5,7 @@ import com.skypro.CoursePaper_2_JavaCOR.domain.Question;
 import java.util.Collection;
 
 public interface ExaminerService {
-    Collection<Question> getQuestion(int amount);
+    Collection<Question> getJavaQuestion(int amount);
+
+    Collection<Question> getMathQuestion(int amount);
 }
