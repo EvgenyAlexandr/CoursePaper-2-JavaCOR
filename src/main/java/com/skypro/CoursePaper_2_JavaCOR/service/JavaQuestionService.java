@@ -80,20 +80,6 @@ public class JavaQuestionService implements QuestionService {
         // Флаг, показывающий, удалось ли удалить вопрос из коллекции
         boolean removeSuccess = false;
 
-        // Перебираем все элементы коллекции questionPull по индексу
-//        // Используем классический for с индексом, так как будем удалять элементы по позиции
-//        for (int i = 0; i < questionPull.size(); i++) {
-//            // Проверяем, совпадает ли текст текущего вопроса с искомым
-//            if (questionPull.get(i).getQuestion().equals(question.getQuestion())) {
-//                // Удаляем вопрос из коллекции по текущему индексу
-//                // При удалении элемент сдвигается, и следующий элемент занимает его позицию
-//                questionPull.remove(i);
-//
-//                // Устанавливаем флаг успеха удаления
-//                removeSuccess = true;
-//            }
-//        }
-
         // Используем итератор для безопасного удаления во время обхода
         Iterator<Question> iterator = questionPull.iterator();
         while (iterator.hasNext()) {
