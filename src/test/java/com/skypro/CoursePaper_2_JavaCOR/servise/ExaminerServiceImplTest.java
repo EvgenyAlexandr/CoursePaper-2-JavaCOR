@@ -5,7 +5,6 @@ import com.skypro.CoursePaper_2_JavaCOR.exceptions.IncorrectNumberOfQuestionsInT
 import com.skypro.CoursePaper_2_JavaCOR.service.ExaminerServiceImpl;
 import com.skypro.CoursePaper_2_JavaCOR.service.JavaQuestionService;
 import com.skypro.CoursePaper_2_JavaCOR.service.MathQuestionService;
-import com.skypro.CoursePaper_2_JavaCOR.service.QuestionService;
 import com.skypro.CoursePaper_2_JavaCOR.unit.QuestionServiceFixture;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -8,8 +8,6 @@ public interface QuestionService {
 
     boolean add(String question, String answer);  // Добавить
 
-   // boolean add(Question question);
-
     boolean remove(Question question);           // Удалить
 
     Collection<Question> getAll();              // Все вопросы

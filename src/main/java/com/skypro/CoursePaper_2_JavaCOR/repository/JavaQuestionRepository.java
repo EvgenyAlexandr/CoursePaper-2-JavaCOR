@@ -14,22 +14,6 @@ public class JavaQuestionRepository implements QuestionRepository {
 
     @Override
     public boolean add(String question, String answer) {
-//        boolean questionExists = false;
-//        for (Question value : questionList) {
-//            if (value.getQuestion().equals(question)) {
-//                if (value.getAnswer().equals(answer)) {
-//                    questionExists = true;
-//                    break;
-//                }
-//            }
-//        }
-//        if (!questionExists) {
-//            questionList.add(new Question(question, answer));
-//            return true;
-//        } else {
-//            return false;
-//        }
-
         // Проверка входных параметров
         if (question == null || answer == null) {
             return false;
@@ -50,18 +34,6 @@ public class JavaQuestionRepository implements QuestionRepository {
 
     @Override
     public boolean remove(Question question) {
-//        boolean removeSuccses = false;
-//        for (int i = 0; i < questionList.size(); i++) {
-//            if (questionList.get(i).getQuestion().equals(question.getQuestion())) {
-//                if (questionList.get(i).getAnswer().equals(question.getAnswer())) {
-//                    questionList.remove(i);
-//                    removeSuccses = true;
-//                }
-//            }
-//        }
-//        return removeSuccses;
-
-
         // Проверяем, что переданный объект question не является null.
         if (question == null) {
             return false;
