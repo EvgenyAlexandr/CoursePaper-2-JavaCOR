@@ -5,7 +5,6 @@ import com.skypro.CoursePaper_2_JavaCOR.exceptions.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestControllerAdvice
 public class ExamControllerAdvice {
     @ExceptionHandler

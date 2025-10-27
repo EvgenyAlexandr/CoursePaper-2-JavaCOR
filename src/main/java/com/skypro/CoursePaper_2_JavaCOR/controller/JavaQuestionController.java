@@ -11,7 +11,6 @@ import java.util.Collection;
 @RestController
 public class JavaQuestionController {
 
-    // Внедрение сервиса для работы с вопросами через Spring Dependency Injection
     @Autowired
     private QuestionService javaQuestionService;
 
