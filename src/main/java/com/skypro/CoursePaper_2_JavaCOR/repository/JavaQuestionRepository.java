@@ -34,7 +34,6 @@ public class JavaQuestionRepository implements QuestionRepository {
 
     @Override
     public boolean remove(Question question) {
-        // Проверяем, что переданный объект question не является null.
         if (question == null) {
             return false;
         }

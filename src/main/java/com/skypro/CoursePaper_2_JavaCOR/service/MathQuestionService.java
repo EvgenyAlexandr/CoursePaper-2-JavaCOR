@@ -35,25 +35,17 @@ public class MathQuestionService implements QuestionService {
     public Question getRandomQuestion() {
         // Проверяем, содержит ли репозиторий математические вопросы
         // Если список вопросов пуст, выбрасываем специальное исключение
-        // Это предотвращает попытку получения случайного элемента из пустого набора данных
         if (mathQuestionRepository.getAll().isEmpty()) {
             throw new IncorrectCallGetRandomQuestionBCQuestionServiceEmpty();
         }
 
         // Создаём экземпляр класса Random для генерации псевдослучайных чисел
-        // Используется стандартный генератор случайных чисел из Java API
         Random random = new Random();
 
         // Генерируем случайный индекс в допустимом диапазоне:
-        // от 0 (включительно) до размера списка вопросов (не включая)
-        // Метод nextInt(int bound) гарантирует, что полученное число
-        // будет корректным индексом для доступа к элементам коллекции
         int randomNumber = random.nextInt(mathQuestionRepository.getAll().size());
 
         // Получаем вопрос по сгенерированному случайному индексу
-        // Предполагаем, что метод getQuestion(int index) возвращает вопрос
-        // из репозитория по его порядковому номеру в списке
-        // Возвращаем случайно выбранный вопрос как результат метода
         return mathQuestionRepository.getQuestion(randomNumber);
     }
 

@@ -6,11 +6,11 @@ import java.util.Collection;
 
 public interface QuestionRepository {
 
-    boolean add(String question, String answer);    // Добавить
+    boolean add(String question, String answer);
 
-    boolean remove(Question question);              // Удалить
+    boolean remove(Question question);
 
-    Collection<Question> getAll();                  // Все
+    Collection<Question> getAll();
 
-    Question getQuestion(int i);                    // Получить вопрос
+    Question getQuestion(int i);
 }

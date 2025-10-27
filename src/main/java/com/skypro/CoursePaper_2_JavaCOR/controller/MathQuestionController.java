@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-public class MathQuestionCintroller {
+public class MathQuestionController {
     @Autowired
     private QuestionService mathQuestionService;
 

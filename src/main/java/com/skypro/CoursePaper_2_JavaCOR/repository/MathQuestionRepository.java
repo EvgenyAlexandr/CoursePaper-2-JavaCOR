@@ -14,8 +14,7 @@ public class MathQuestionRepository implements QuestionRepository {
 
     @Override
     public boolean add(String question, String answer) {
-        // Проверяем, что переданные параметры не являются null
-        // Если хотя бы один из них null — возвращаем false (добавление не выполнено)
+        // Проверка входных параметров
         if (question == null || answer == null) {
             return false;
         }
@@ -41,32 +40,25 @@ public class MathQuestionRepository implements QuestionRepository {
 
     @Override
     public boolean remove(Question question) {
-        // Флаг, показывающий, удалось ли удалить элемент
-        // Изначально устанавливаем в false (удаление не выполнено)
-        boolean removeSuccess = false;
+        // Проверка на null-аргумент
+        if (question == null) return false;
 
-        // Создаём итератор для безопасного удаления элементов из списка
-        // (удаление через итератор предотвращает ConcurrentModificationException)
-        Iterator<Question> iterator = questionList.iterator();
+        boolean removeSuccess = false; // Флаг успешного удаления
 
-        // Проходим по всем элементам списка с помощью итератора
-        while (iterator.hasNext()) {
-            // Получаем текущий элемент списка
-            Question current = iterator.next();
+        // Обход списка с конца для безопасного удаления элементов
+        for (int i = questionList.size() - 1; i >= 0; i--) {
+            Question current = questionList.get(i); // Получение текущего элемента
 
-            // Проверяем, совпадает ли текущий вопрос с тем, который нужно удалить
-            // Сравнение идёт по вопросу и ответу (предполагается, что это уникальный идентификатор)
-            if (current.getQuestion().equals(question.getQuestion()) &&
+            // Проверка на null и совпадение полей вопроса и ответа
+            if (current != null &&
+                    current.getQuestion().equals(question.getQuestion()) &&
                     current.getAnswer().equals(question.getAnswer())) {
-                // Если совпадение найдено — удаляем элемент через итератор
-                iterator.remove();
-                // Устанавливаем флаг успеха в true
-                removeSuccess = true;
+
+                questionList.remove(i); // Удаление элемента по индексу
+                removeSuccess = true;   // Установка флага успеха
             }
         }
-
-        // Возвращаем результат операции: true, если элемент был удалён, иначе false
-        return removeSuccess;
+        return removeSuccess; // Возврат результата удаления
     }
 
 

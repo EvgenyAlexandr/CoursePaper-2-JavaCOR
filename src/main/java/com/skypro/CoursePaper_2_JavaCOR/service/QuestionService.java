@@ -6,12 +6,12 @@ import java.util.Collection;
 
 public interface QuestionService {
 
-    boolean add(String question, String answer);  // Добавить
+    boolean add(String question, String answer);
 
-    boolean remove(Question question);           // Удалить
+    boolean remove(Question question);
 
-    Collection<Question> getAll();              // Все вопросы
+    Collection<Question> getAll();
 
-    Question getRandomQuestion();               // Получить Случайный вопрос
+    Question getRandomQuestion();
 
 }
