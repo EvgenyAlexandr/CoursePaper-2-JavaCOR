@@ -1,8 +1,8 @@
 package com.skypro.CoursePaper_2_JavaCOR.errors;
 
 public class ExamError {
-    private final String code;      // Код
-    private final String message;   // Сообщение
+    private final String code;
+    private final String message;
 
     public ExamError(int code, String message) {
         this.code = String.valueOf(code);
