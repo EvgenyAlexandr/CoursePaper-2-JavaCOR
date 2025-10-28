@@ -10,8 +10,8 @@ import java.util.*;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private final JavaQuestionService javaQuestionService;
-    private final MathQuestionService mathQuestionService;
+    private final QuestionService javaQuestionService;
+    private final QuestionService mathQuestionService;
 
     public ExaminerServiceImpl(JavaQuestionService javaQuestionService, MathQuestionService mathQuestionService) {
         this.javaQuestionService = javaQuestionService;
